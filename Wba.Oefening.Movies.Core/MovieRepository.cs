@@ -63,6 +63,15 @@ namespace Wba.Oefening.Movies.Core
                                                 a.Id == 4),
                     Genre = _genreRepository.GetGenres().FirstOrDefault(g => g.Id == 4),
                     Image = "starwars.jpg"
+                },
+                    new Movie{
+                    Id = Guid.Parse("00000000-0000-0000-0000-000000000005"),
+                    Title ="Star Wars IV",
+                    Directors = AllDirectors.Where(d => d.Id == 4),
+                    Actors = AllActors.Where(   a => a.Id == 3 ||
+                                                a.Id == 4),
+                    Genre = _genreRepository.GetGenres().FirstOrDefault(g => g.Id == 4),
+                    Image = "starwars.jpg"
                 }
             };
         }

@@ -39,15 +39,19 @@ namespace Wba.Oefening.Movies.Web.Controllers
         #region - Show All Director Movies
         public IActionResult ShowDirectorMovies(long directorId)
         {
-            var director = _movieRepository.GetMovies().Where(m => m.Directors.Any(d => d.Id == directorId));
+            var movies = _movieRepository.GetMovies().Where(m => m.Directors.Any(d => d.Id == directorId));
+            var director = _directorRepository.GetDirectors().First(d => d.Id == directorId);
+            
             var peopleShowDirectorMoviesViewModel = new PeopleShowDirectorMoviesViewModel();
-            peopleShowDirectorMoviesViewModel.Movies = director.Select(m => new MoviesGetAllMoviesViewModel 
+            peopleShowDirectorMoviesViewModel.Director = $"{director.FirstName} {director.SurName}";
+            peopleShowDirectorMoviesViewModel.Movies = movies.Select(m => new MoviesGetAllMoviesViewModel 
                 { 
                     Id = m.Id,
                     Title = m.Title,
                     Image = m.Image,
                     Genre = m.Genre.Name
                 });
+
             return View(peopleShowDirectorMoviesViewModel);
         }
         #endregion
