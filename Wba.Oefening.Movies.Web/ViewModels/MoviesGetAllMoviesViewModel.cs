@@ -1,5 +1,4 @@
-﻿using Wba.Oefening.Movies.Core;
-
+﻿
 namespace Wba.Oefening.Movies.Web.ViewModels
 {
     public class MoviesGetAllMoviesViewModel
@@ -8,8 +7,5 @@ namespace Wba.Oefening.Movies.Web.ViewModels
         public string Title { get; set; }
         public string Image { get; set; }
         public string Genre { get; set; }
-        public IEnumerable<BasePeopleViewModel> Actors { get; set; }
-        public IEnumerable<BasePeopleViewModel> Directors { get; set; }
-
     }
 }

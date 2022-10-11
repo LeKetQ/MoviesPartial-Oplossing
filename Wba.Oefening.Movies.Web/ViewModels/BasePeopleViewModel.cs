@@ -1,4 +1,5 @@
-﻿namespace Wba.Oefening.Movies.Web.ViewModels
+﻿
+namespace Wba.Oefening.Movies.Web.ViewModels
 {
     public class BasePeopleViewModel
     {
