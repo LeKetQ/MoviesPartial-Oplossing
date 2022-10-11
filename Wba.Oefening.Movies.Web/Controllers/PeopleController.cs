@@ -1,8 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using System.Data.Common;
-using System.Drawing;
-using System.Reflection;
-using System.Text;
+﻿
+using Microsoft.AspNetCore.Mvc;
 using Wba.Oefening.Movies.Core;
 using Wba.Oefening.Movies.Web.ViewModels;
 
