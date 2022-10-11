@@ -1,0 +1,38 @@
+﻿
+@model MoviesMovieDetailViewModel
+
+<div class="row">
+
+    <h1>Movie Detail</h1>
+
+    <div class="col">
+        <img class="img-fluid" src="~/images/@Model.Image" />
+        <h2 class="card-title"><strong>@Model.Title</strong></h2>
+        <h4>Genre: @Model.Genre</h4>              <br />
+
+        <div>
+            <h5>Director:</h5>
+            <ul>
+                @foreach (var director in @Model.Directors)
+                {
+                    <li>@director.Name</li>
+                }
+            </ul>
+        </div>
+
+
+        <div>
+            <h5>Actors:</h5>
+            <ul>
+                @foreach (var actor in @Model.Actors)
+                {
+                    <li>@actor.Name</li>
+                }
+            </ul>
+        </div>
+
+        <a asp-controller="Movies" asp-action="Index" class="btn btn-primary">back</a>
+
+    </div>
+
+</div>

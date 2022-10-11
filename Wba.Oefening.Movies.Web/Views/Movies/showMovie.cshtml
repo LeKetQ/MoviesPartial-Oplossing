@@ -1,40 +1,7 @@
 ﻿@model MoviesMovieDetailViewModel
+
 @{
     ViewData["Title"] = "Movie Details";
 }
 
-<h1>Movie Detail</h1>
-<div class="row">
-
-        <div class="col">
-                <img class="img-fluid" src="~/images/@Model.Image" />
-            <h2 class="card-title"><strong>@Model.Title</strong></h2>
-            <h4>Genre: @Model.Genre</h4>              <br />
-
-            <h5>
-
-            <p>Director:</p>
-                <ul>
-                    @foreach (var director in @Model.Directors)
-                    {
-                        <li>@director.Name</li>
-                    }
-                </ul>
-            </h5>
-
-
-<h5>
-            <p>Actors:</p>
-                <ul>
-                    @foreach (var actor in @Model.Actors)
-                    {
-                        <li>@actor.Name</li>
-                    }
-                </ul>
-</h5>
-
-    
-            <a asp-controller="Movies" asp-action="Index" class="btn btn-primary">back</a>
-        </div>
-
-</div>
+<partial name="_MovieDetailPartial" model="@Model" />
