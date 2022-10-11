@@ -1,4 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Data.Common;
+using System.Drawing;
+using System.Reflection;
+using System.Text;
 using Wba.Oefening.Movies.Core;
 using Wba.Oefening.Movies.Web.ViewModels;
 
@@ -14,38 +18,53 @@ namespace Wba.Oefening.Movies.Web.Controllers
             _directorRepository = new DirectorRepository();
             _movieRepository = new MovieRepository();
         }
+
+        #region - Index
         public IActionResult Index()
         {
             return View();
         }
+        #endregion
 
+        #region - Show All Directors
         public IActionResult ShowDirectors()
         {
-            var peopleShowDirectorsViewModelDirectors = new PeopleIndexViewModel();
-            peopleShowDirectorsViewModelDirectors.Directors = _directorRepository.GetDirectors().Select(d => new BasePeopleViewModel
+            var peopleShowDirectorsViewModel = new PeopleIndexViewModel();
+            peopleShowDirectorsViewModel.Directors = _directorRepository.GetDirectors().Select(d => new BasePeopleViewModel
             {
+                Id = d.Id,
                 Name = $"{d.FirstName} {d.SurName}"
             });
-            return View(peopleShowDirectorsViewModelDirectors);
+            return View(peopleShowDirectorsViewModel);
         }
+        #endregion
 
+        #region - Show All Director Movies
         public IActionResult ShowDirectorMovies(long directorId)
         {
-            var directors = _movieRepository.GetMovies().Where(m => m.Directors.Any(d => d.Id == directorId));
-
-            //
-            return View();
-
+            var director = _movieRepository.GetMovies().Where(m => m.Directors.Any(d => d.Id == directorId));
+            var peopleShowDirectorMoviesViewModel = new PeopleShowDirectorMoviesViewModel();
+            peopleShowDirectorMoviesViewModel.Movies = director.Select(m => new MoviesGetAllMoviesViewModel 
+                { 
+                    Title = m.Title,
+                    Genre = m.Genre.Name
+                });
+            return View(peopleShowDirectorMoviesViewModel);
         }
+        #endregion
 
+        #region - Show All Actors
         public IActionResult ShowActors()
         {
             return View();
         }
+        #endregion
 
+        #region - Show All Actor Movies
         public IActionResult ShowActorMovies(long id)
         {
             return View();
         }
+        #endregion
     }
 }

@@ -32,8 +32,8 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "DirectorDetails",
-    pattern: "Director/{directorId}",
-    defaults: new { Controller = "Director", Action = "ShowDirectorMovies" });
+    pattern: "People/{directorId}",
+    defaults: new { Controller = "People", Action = "ShowDirectorMovies" });
 
 app.MapControllerRoute(
     name: "MovieDetails",
