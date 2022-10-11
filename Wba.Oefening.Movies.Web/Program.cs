@@ -20,12 +20,20 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-
+app.MapControllerRoute(
+    name: "AllDirectors",
+    pattern: "Directors/All",
+    defaults: new { Controller = "People", Action = "ShowDirectors" });
 
 app.MapControllerRoute(
     name: "AllMovies",
     pattern: "Movies/All",
     defaults: new {Controller = "Movies", Action = "Index"});
+
+app.MapControllerRoute(
+    name: "DirectorDetails",
+    pattern: "Director/{directorId}",
+    defaults: new { Controller = "Director", Action = "ShowDirectorMovies" });
 
 app.MapControllerRoute(
     name: "MovieDetails",

@@ -1,0 +1,16 @@
+﻿@model PeopleIndexViewModel
+
+@{
+    ViewData["Title"] = "ShowDirectors";
+}
+
+<h1>Index</h1>
+<div class="row">
+
+    @foreach (var director in @Model.Directors)
+    {
+        <div class="col">
+            <a asp-controller="People" asp-action="ShowDirectorMovies" asp-route-directorId="@director.Id" class="page-link">@director.Name</a>
+        </div>
+    }
+</div>
