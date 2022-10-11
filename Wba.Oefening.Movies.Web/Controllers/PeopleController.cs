@@ -43,7 +43,9 @@ namespace Wba.Oefening.Movies.Web.Controllers
             var peopleShowDirectorMoviesViewModel = new PeopleShowDirectorMoviesViewModel();
             peopleShowDirectorMoviesViewModel.Movies = director.Select(m => new MoviesGetAllMoviesViewModel 
                 { 
+                    Id = m.Id,
                     Title = m.Title,
+                    Image = m.Image,
                     Genre = m.Genre.Name
                 });
             return View(peopleShowDirectorMoviesViewModel);
