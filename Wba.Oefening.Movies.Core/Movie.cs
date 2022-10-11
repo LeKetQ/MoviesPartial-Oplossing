@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using Wba.Oefening.Movies.Core;
 
+
 namespace Wba.Oefening.Movies.Core
 {
     public class Movie

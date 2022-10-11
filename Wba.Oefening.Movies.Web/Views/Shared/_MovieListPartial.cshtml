@@ -1,0 +1,16 @@
+﻿@model IEnumerable<MoviesGetAllMoviesViewModel>
+
+<h1>Index</h1>
+<div class="row">
+
+    @foreach (var movie in @Model)
+    {
+        <div class="col">
+            <a asp-controller="Movies" asp-action="ShowMovie" asp-route-movieId="@movie.Id" class="page-link">
+                <img class="img-fluid" src="~/images/@movie.Image" />
+                <div class="figure-caption">@movie.Title</div>
+                <small>@movie.Genre</small>
+            </a>
+        </div>
+    }
+</div>
