@@ -6,14 +6,15 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.UseDeveloperExceptionPage(); 
-}
-else 
+if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
+
+}
+else 
+{
+    app.UseDeveloperExceptionPage();
 }
 
 app.UseHttpsRedirection();
@@ -29,14 +30,14 @@ app.MapControllerRoute(
     defaults: new { Controller = "Movies", Action = "ShowMovie" });
 
 app.MapControllerRoute(
-    name: "ActorDetails",
-    pattern: "People/{actorId}",
-    defaults: new { Controller = "People", Action = "ShowActorMovies" });
-
-app.MapControllerRoute(
     name: "DirectorDetails",
     pattern: "People/{directorId}",
     defaults: new { Controller = "People", Action = "ShowDirectorMovies" });
+
+app.MapControllerRoute(
+    name: "ActorDetails",
+    pattern: "People/{actorId}",
+    defaults: new { Controller = "People", Action = "ShowActorMovies" });
 
 app.MapControllerRoute(
     name: "AllMovies",
