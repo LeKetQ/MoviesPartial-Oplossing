@@ -72,8 +72,10 @@ namespace Wba.Oefening.Movies.Web.Controllers
         #endregion
 
         #region - Show All Actor Movies
-        public IActionResult ShowActorMovies(long id)
+        public IActionResult ShowActorMovies(long actorid)
         {
+            var peopleShowActorMoviesViewModel = new PeopleShowActorMoviesViewModel();
+
             return View();
         }
         #endregion
