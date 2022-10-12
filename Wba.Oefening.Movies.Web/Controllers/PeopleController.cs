@@ -9,11 +9,13 @@ namespace Wba.Oefening.Movies.Web.Controllers
     {
         public readonly DirectorRepository _directorRepository;
         public readonly MovieRepository _movieRepository;
+        public readonly ActorRepository _actorRepository;
 
         public PeopleController()
         {
             _directorRepository = new DirectorRepository();
             _movieRepository = new MovieRepository();
+            _actorRepository = new ActorRepository();
         }
 
         #region - Index
@@ -59,7 +61,13 @@ namespace Wba.Oefening.Movies.Web.Controllers
         #region - Show All Actors
         public IActionResult ShowActors()
         {
-            return View();
+            var peopleShowActorsViewModel = new PeopleIndexViewModel();
+            peopleShowActorsViewModel.Actors = _actorRepository.GetActors().Select(a => new BasePeopleViewModel
+            {
+                Id = a.Id,
+                Name = $"{a.FirstName} {a.SurName}"
+            });
+            return View(peopleShowActorsViewModel);
         }
         #endregion
 

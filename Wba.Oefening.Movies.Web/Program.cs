@@ -26,6 +26,11 @@ app.MapControllerRoute(
     defaults: new { Controller = "People", Action = "ShowDirectors" });
 
 app.MapControllerRoute(
+    name: "AllActors",
+    pattern: "Actors/All",
+    defaults: new { Controller = "People", Action = "ShowActors" });
+
+app.MapControllerRoute(
     name: "AllMovies",
     pattern: "Movies/All",
     defaults: new {Controller = "Movies", Action = "Index"});
