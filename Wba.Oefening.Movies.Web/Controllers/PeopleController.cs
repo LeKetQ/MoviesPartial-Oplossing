@@ -19,13 +19,6 @@ namespace Wba.Oefening.Movies.Web.Controllers
             _actorRepository = new ActorRepository();
         }
 
-        #region - Index
-        public IActionResult Index()
-        {
-            return View();
-        }
-        #endregion
-
         #region - Show All Directors
         public IActionResult ShowDirectors()
         {
