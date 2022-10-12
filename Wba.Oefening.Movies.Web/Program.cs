@@ -6,19 +6,15 @@ builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-/*
-if (!app.Environment.IsDevelopment())
+if (app.Environment.IsDevelopment())
+{
+    app.UseDeveloperExceptionPage();
+}
+else
 {
     app.UseExceptionHandler("/Home/Error");
     app.UseHsts();
-
-}
-else 
-{
-   
-}
-*/
-app.UseDeveloperExceptionPage();
+};
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
@@ -27,9 +23,11 @@ app.UseRouting();
 
 app.UseAuthorization();
 
+
+#region - Routing
 app.MapControllerRoute(
     name: "AllMovies",
-    pattern: "Movies/All",
+    pattern: "Movies",
     defaults: new { Controller = "Movies", Action = "Index" });
 
 app.MapControllerRoute(
@@ -39,7 +37,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "AllDirectors",
-    pattern: "Directors/All",
+    pattern: "Directors",
     defaults: new { Controller = "People", Action = "ShowDirectors" });
 
 app.MapControllerRoute(
@@ -49,7 +47,7 @@ app.MapControllerRoute(
 
 app.MapControllerRoute(
     name: "AllActors",
-    pattern: "Actors/All",
+    pattern: "Actors",
     defaults: new { Controller = "People", Action = "ShowActors" });
 
 app.MapControllerRoute(
@@ -58,5 +56,7 @@ app.MapControllerRoute(
     defaults: new { Controller = "People", Action = "ShowActorMovies" });
 
 app.MapDefaultControllerRoute();
+#endregion
+
 
 app.Run();
