@@ -1,0 +1,10 @@
+﻿@model PeopleShowActorMoviesViewModel
+@{
+    ViewData["Title"] = "Actor Movies";
+}
+
+<h1 align="center">@Model.Actor</h1>
+<div align="center">
+
+    <partial name="_MovieListPartial" model="@Model.Movies" />
+</div>
