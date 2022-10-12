@@ -13,6 +13,8 @@ namespace Wba.Oefening.Movies.Web.Controllers
         {
             _movieRepository = new MovieRepository();
         }
+
+        #region - Landing Page
         public IActionResult Index()
         {
             var moviesIndexViewModel = new MoviesIndexViewModel();
@@ -25,7 +27,9 @@ namespace Wba.Oefening.Movies.Web.Controllers
             });
             return View(moviesIndexViewModel);
         }
+        #endregion
 
+        #region - Show Movie detail
         public IActionResult ShowMovie(Guid movieId)
         {
             var movie = _movieRepository.GetMovies().FirstOrDefault(m => m.Id == movieId);
@@ -54,6 +58,7 @@ namespace Wba.Oefening.Movies.Web.Controllers
                 return View(moviesMovieDetailViewModel);
             }
         }
+        #endregion
     }
 }
 
