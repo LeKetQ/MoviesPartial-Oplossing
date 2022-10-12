@@ -10,7 +10,7 @@
     @foreach (var actor in @Model.Actors)
     {
         <div class="col">
-            <a asp-controller="People" asp-action="ShowActorMovies" asp-route-directorId="@actor.Id" class="page-link">@actor.Name</a>
+            <a asp-controller="People" asp-action="ShowActorMovies" asp-route-actorId="@actor.Id" class="page-link">@actor.Name</a>
         </div>
     }
 </div>

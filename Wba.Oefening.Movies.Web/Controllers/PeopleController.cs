@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.AspNetCore.Mvc;
+using System.IO;
 using Wba.Oefening.Movies.Core;
 using Wba.Oefening.Movies.Web.ViewModels;
 
@@ -74,9 +75,19 @@ namespace Wba.Oefening.Movies.Web.Controllers
         #region - Show All Actor Movies
         public IActionResult ShowActorMovies(long actorid)
         {
-            var peopleShowActorMoviesViewModel = new PeopleShowActorMoviesViewModel();
+            var movies = _movieRepository.GetMovies().Where(m => m.Actors.Any(a => a.Id == actorid));
+            var actor = _actorRepository.GetActors().First(a => a.Id == actorid);
 
-            return View();
+            var peopleShowActorMoviesViewModel = new PeopleShowActorMoviesViewModel();
+            peopleShowActorMoviesViewModel.Actor = $"{actor.FirstName} {actor.SurName}";
+            peopleShowActorMoviesViewModel.Movies = movies.Select(m => new MoviesGetAllMoviesViewModel
+            {
+                Id = m.Id,
+                Title = m.Title,
+                Image = m.Image,
+                Genre = m.Genre.Name
+            });
+            return View(peopleShowActorMoviesViewModel);
         }
         #endregion
     }
