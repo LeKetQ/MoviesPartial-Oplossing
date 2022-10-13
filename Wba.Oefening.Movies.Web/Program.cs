@@ -25,10 +25,7 @@ app.UseAuthorization();
 
 
 #region - Routing
-app.MapControllerRoute(
-    name: "AllMovies",
-    pattern: "Movies",
-    defaults: new { Controller = "Movies", Action = "Index" });
+
 
 app.MapControllerRoute(
     name: "MovieDetails",
@@ -36,9 +33,9 @@ app.MapControllerRoute(
     defaults: new { Controller = "Movies", Action = "ShowMovie" });
 
 app.MapControllerRoute(
-    name: "AllDirectors",
-    pattern: "Directors",
-    defaults: new { Controller = "People", Action = "ShowDirectors" });
+    name: "ActorDetails",
+    pattern: "People/{actorId}",
+    defaults: new { Controller = "People", Action = "ShowActorMovies" });
 
 app.MapControllerRoute(
     name: "DirectorDetails",
@@ -46,14 +43,14 @@ app.MapControllerRoute(
     defaults: new { Controller = "People", Action = "ShowDirectorMovies" });
 
 app.MapControllerRoute(
+    name: "AllDirectors",
+    pattern: "Directors",
+    defaults: new { Controller = "People", Action = "ShowDirectors" });
+
+app.MapControllerRoute(
     name: "AllActors",
     pattern: "Actors",
     defaults: new { Controller = "People", Action = "ShowActors" });
-
-app.MapControllerRoute(
-    name: "ActorDetails",
-    pattern: "People/{actorId}",
-    defaults: new { Controller = "People", Action = "ShowActorMovies" });
 
 app.MapDefaultControllerRoute();
 #endregion
